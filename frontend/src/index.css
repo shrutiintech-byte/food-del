@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+/* RESET & BASE STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #ffffff; /* Clean white background is more professional */
+  color: #262626; /* Darker text for better readability */
+  font-family: "Outfit", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* LINKS */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s;
+}
+
+/* APP WRAPPER */
+.app {
+  /* This ensures the entire app stays centered and doesn't stretch too wide */
+  width: 90%; 
+  max-width: 1280px; 
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* FLEX/GRID UTILITY FOR EQUAL SPACING */
+/* Add this to your container that holds the menu circles */
+.explore-menu-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto; /* Allows scrolling on mobile */
+  padding: 20px 0;
+  scrollbar-width: none; /* Hides scrollbar on Firefox */
+}
+
+.explore-menu-list::-webkit-scrollbar {
+  display: none; /* Hides scrollbar on Chrome/Safari */
+}
+
+/* SECTION HEADINGS */
+h2 {
+  font-weight: 600;
+  font-size: clamp(24px, 5vw, 32px); /* Scales font size based on screen */
+  color: #212121;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #6d6d6d;
+  font-size: 16px;
+  max-width: 700px; /* Prevents text from stretching too far, easier to read */
+}
+
+/* HORIZONTAL RULE FOR CLEANER SEPARATION */
+hr {
+  margin: 10px 0;
+  height: 2px;
+  background-color: #e2e2e2;
+  border: none;
+}
+
+/* FADE-IN ANIMATION */
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

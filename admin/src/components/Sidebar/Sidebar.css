@@ -1,0 +1,128 @@
+/* SIDEBAR */
+.sidebar {
+  width: 240px;
+  height: calc(100vh - 68px);
+  background: rgba(255, 255, 255, 0.85); /* SAME as navbar */
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(0,0,0,0.06);
+  padding: 20px 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* OPTIONS */
+.sidebar-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* ITEM */
+.sidebar-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px;
+  margin: 0 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #444;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+/* ICON */
+.sidebar-option img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: 0.25s ease;
+}
+
+/* TEXT */
+.sidebar-option p {
+  margin: 0;
+}
+
+/* HOVER */
+.sidebar-option:hover {
+  background: rgba(0,0,0,0.05);
+  color: #111;
+  transform: translateX(4px);
+}
+
+/* ICON HOVER */
+.sidebar-option:hover img {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ACTIVE */
+.sidebar-option.active {
+  background: rgba(255, 77, 77, 0.1);
+  color: #ff4d4d;
+}
+
+/* LEFT ACCENT */
+.sidebar-option.active::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 8px;
+  height: 65%;
+  width: 4px;
+  background: #ff4d4d;
+  border-radius: 3px;
+}
+
+/* ACTIVE ICON */
+.sidebar-option.active img {
+  opacity: 1;
+}
+
+/* 🔥 SMOOTH DIVIDER */
+.sidebar::after {
+  content: "";
+  width: 1px;
+  height: 90%;
+  background: rgba(0,0,0,0.05);
+  position: absolute;
+  right: 0;
+  top: 5%;
+}
+
+/* 🔥 TABLET */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 80px;
+  }
+
+  .sidebar-option {
+    justify-content: center;
+    padding: 14px;
+  }
+
+  .sidebar-option p {
+    display: none;
+  }
+}
+
+/* 🔥 MOBILE */
+@media (max-width: 600px) {
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    top: 68px;
+    z-index: 999;
+    transition: 0.3s ease;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+}

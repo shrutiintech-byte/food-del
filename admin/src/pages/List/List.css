@@ -1,0 +1,157 @@
+/* MAIN CONTAINER */
+.list {
+  padding: 40px;
+  width: 150%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: #f8fafc;
+  box-sizing: border-box;
+}
+
+/* TITLE */
+.list-title {
+  width: 100%;
+  max-width: 1400px;
+
+  font-size: 26px;
+  font-weight: 700;
+  color: #222;
+
+  margin-bottom: 20px;
+}
+
+/* TABLE WRAPPER */
+.list-table {
+  width: 100%;
+  max-width: 3000px;   /* 🔥 BIG BOX */
+
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ROW FORMAT */
+.list-table-format {
+  display: grid;
+  grid-template-columns: 100px 2fr 1.5fr 1fr 100px;
+
+  align-items: center;
+  padding: 18px 24px;
+
+  transition: all 0.25s ease;
+}
+
+/* HEADER */
+.list-table-format.title {
+  background: linear-gradient(135deg, #ff7a00, #ff4d00);
+  color: #fff;
+  font-size: 14px;
+}
+
+/* BODY ROW */
+.list-table-format:not(.title) {
+  border-bottom: 1px solid #f1f1f1;
+}
+
+/* HOVER EFFECT */
+.list-table-format:not(.title):hover {
+  background: #fff7f2;
+  transform: scale(1.01);
+}
+
+/* IMAGE */
+.list-table-format img {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #f3f3f3;
+}
+
+/* TEXT */
+.list-table-format p {
+  font-size: 15px;
+  color: #444;
+}
+
+/* PRICE */
+.list-table-format p:nth-child(4) {
+  font-weight: 600;
+  color: #ff4d00;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+  background: #ffe8e5;
+  color: #ff3b30;
+  border-radius: 10px;
+  padding: 8px 12px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+/* DELETE HOVER */
+.delete-btn:hover {
+  background: #ff3b30;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* TABLET */
+@media (max-width: 1000px) {
+  .list-table-format {
+    grid-template-columns: 80px 1.5fr 1fr 1fr 80px;
+    padding: 14px;
+  }
+}
+
+/* SMALL TABLET */
+@media (max-width: 800px) {
+  .list-table-format {
+    grid-template-columns: 60px 1fr 1fr;
+    gap: 10px;
+  }
+
+  .list-table-format.title {
+    display: none;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .list {
+    padding: 20px;
+  }
+
+  .list-table {
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .list-table-format {
+    grid-template-columns: 1fr;
+    background: #fff;
+    margin-bottom: 15px;
+    border-radius: 14px;
+    padding: 16px;
+  }
+
+  .list-table-format img {
+    margin-bottom: 10px;
+  }
+
+  .delete-btn {
+    margin-top: 10px;
+    width: fit-content;
+  }
+}

@@ -1,0 +1,150 @@
+/* MAIN CONTAINER */
+.add {
+  min-height: 100vh;
+  width: 140%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  box-sizing: border-box;   /* ✅ important fix */
+
+  background: linear-gradient(135deg, #f6f9fc, #eef2f7);
+}
+/* FORM WRAPPER (GLASS STYLE) */
+.add form {
+  width: 100%;
+  max-width: 900px;
+  padding: 30px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* LABEL */
+.add p {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* FLEX COLUMN */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* INPUTS */
+.add input,
+.add textarea,
+.add select {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  outline: none;
+
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #e0e0e0;
+
+  transition: all 0.25s ease;
+}
+
+/* INPUT FOCUS */
+.add input:focus,
+.add textarea:focus,
+.add select:focus {
+  box-shadow: inset 0 0 0 1px #ff7a00, 0 0 8px rgba(255,122,0,0.2);
+}
+
+/* IMAGE UPLOAD */
+.add-img-upload {
+  align-items: center;
+  text-align: center;
+}
+
+.add-img-upload img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 16px;
+  cursor: pointer;
+
+  border: 2px dashed #ccc;
+  padding: 12px;
+  background: #fff;
+
+  transition: all 0.3s ease;
+}
+
+/* IMAGE HOVER */
+.add-img-upload img:hover {
+  border-color: #ff7a00;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255,122,0,0.2);
+}
+
+/* GRID LAYOUT */
+.add-category-price {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* BUTTON */
+.add-btn {
+  margin-top: 10px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #ff7a00, #ff4d00);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* BUTTON HOVER */
+.add-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255,122,0,0.3);
+}
+
+/* BUTTON CLICK */
+.add-btn:active {
+  transform: scale(0.97);
+}
+
+/* 🔥 RESPONSIVE */
+@media (max-width: 768px) {
+
+  .add {
+    align-items: flex-start;   /* better mobile UX */
+    padding-top: 40px;
+  }
+
+  .add form {
+    padding: 20px;
+  }
+
+  .add-category-price {
+    grid-template-columns: 1fr;
+  }
+
+  .add-img-upload img {
+    width: 110px;
+    height: 110px;
+  }
+}

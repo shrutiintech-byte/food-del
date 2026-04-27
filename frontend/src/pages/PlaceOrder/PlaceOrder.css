@@ -1,0 +1,173 @@
+.place-order {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+
+  padding: 50px 8%;
+  min-height: 100vh;
+
+  background: #f6f7fb;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ================= LEFT SIDE ================= */
+
+.place-order-left {
+  flex: 1.2;
+  background: #ffffff;
+
+  padding: 30px;
+  border-radius: 18px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  border: 1px solid #eee;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #ff6a00;
+}
+
+/* inputs */
+.place-order-left input {
+  width: 100%;
+  padding: 14px 16px;
+
+  margin-bottom: 14px;
+
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+
+  outline: none;
+  font-size: 14px;
+
+  transition: 0.2s ease;
+  background: #fafafa;
+}
+
+.place-order-left input:focus {
+  border-color: #ff6a00;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(255,106,0,0.1);
+}
+
+/* row inputs */
+.multi-fields {
+  display: flex;
+  gap: 12px;
+}
+
+.multi-fields input {
+  flex: 1;
+}
+
+/* ================= RIGHT SIDE ================= */
+
+.place-order-right {
+  flex: 0.8;
+  position: sticky;
+  top: 20px;
+}
+
+/* TOTAL CARD */
+.cart-total {
+  background: #ffffff;
+  padding: 25px;
+
+  border-radius: 18px;
+  border: 1px solid #eee;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+/* top accent line */
+.cart-total::before {
+  content: "";
+  display: block;
+
+  height: 4px;
+  width: 100%;
+
+  background: linear-gradient(90deg, #ff6a00, #ff8c00);
+  border-radius: 10px;
+
+  margin-bottom: 18px;
+}
+
+.cart-total h2 {
+  font-size: 18px;
+  margin-bottom: 18px;
+  color: #333;
+}
+
+/* rows */
+.cart-total-details {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 10px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* highlight total */
+.cart-total-details b {
+  color: #ff6a00;
+  font-size: 18px;
+}
+
+/* divider */
+.cart-total hr {
+  border: none;
+  height: 1px;
+  background: #eee;
+  margin: 15px 0;
+}
+
+/* button */
+.cart-total button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 14px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #ff6a00, #ff8c00);
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.cart-total button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255,106,0,0.25);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .place-order {
+    flex-direction: column;
+    padding: 30px 5%;
+  }
+
+  .place-order-right {
+    position: static;
+  }
+
+  .multi-fields {
+    flex-direction: column;
+  }
+
+  .place-order-left,
+  .cart-total {
+    width: 100%;
+  }
+}

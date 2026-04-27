@@ -1,0 +1,119 @@
+/* =======================
+   MAIN PAGE CONTAINER
+======================= */
+.my-orders {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =======================
+   TITLE
+======================= */
+.my-orders h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ff6a00;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.my-orders h2::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: #ff6a00;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  border-radius: 10px;
+}
+
+/* =======================
+   CONTAINER GRID
+======================= */
+.my-orders .container {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* =======================
+   ORDER CARD
+======================= */
+.my-orders-order {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  background: #fff;
+  border: 1px solid #ffe0cc;
+  border-left: 6px solid #ff6a00;
+  padding: 18px 20px;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+}
+
+.my-orders-order:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(255, 106, 0, 0.15);
+}
+
+/* =======================
+   ICON
+======================= */
+.my-orders-order img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+/* =======================
+   TEXT
+======================= */
+.my-orders-order p {
+  flex: 1;
+  font-size: 15px;
+  color: #333;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* =======================
+   PRICE / EXTRA INFO
+======================= */
+.my-orders-order p:nth-child(3) {
+  font-weight: bold;
+  color: #ff6a00;
+}
+
+/* =======================
+   RESPONSIVE DESIGN
+======================= */
+@media (max-width: 768px) {
+  .my-orders-order {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .my-orders-order img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .my-orders h2 {
+    font-size: 26px;
+  }
+}

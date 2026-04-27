@@ -1,0 +1,73 @@
+.app-download {
+  width: 90%;
+  max-width: 1000px;
+ margin: 60px auto 20px;
+
+  padding: 50px 30px;
+
+  display: flex;                 /* 🔥 important */
+  flex-direction: column;
+  justify-content: center;       /* 🔥 vertical center */
+  align-items: center;           /* 🔥 horizontal center */
+
+  text-align: center;
+
+  background: linear-gradient(135deg, #1f1f1f, #2c2c2c);
+  border-radius: 18px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* TEXT */
+.app-download p {
+  font-size: 24px;           /* 🔥 fixed size (better than vw) */
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+/* OPTIONAL HIGHLIGHT */
+.app-download p span {
+  color: #ff7a18;
+}
+
+/* BUTTONS / IMAGES */
+.app-download-platforms {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* IMAGES */
+.app-download-platforms img {
+  width: 150px;
+  max-width: 160px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+/* HOVER EFFECT */
+.app-download-platforms img:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 122, 24, 0.4);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .app-download {
+    padding: 35px 20px;
+    margin: 60px auto;
+  }
+
+  .app-download p {
+    font-size: 20px;
+  }
+
+  .app-download-platforms img {
+    width: 130px;
+  }
+}
