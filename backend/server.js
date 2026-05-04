@@ -19,20 +19,25 @@ connectDB();
 // ================= CORS CONFIG =================
 const allowedOrigins = [
   "http://localhost:5173",
-  "http://localhost:5174",
-  "https://food-dyn9twz2o-shrutiintech-bytes-projects.vercel.app"
+  "http://localhost:5174"
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
-    // allow requests with no origin (like Postman / mobile apps)
+    // allow requests with no origin (Postman / mobile apps)
     if (!origin) return callback(null, true);
 
+    // allow localhost
     if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS: " + origin));
+      return callback(null, true);
     }
+
+    // allow ALL vercel deployments (🔥 main fix)
+    if (origin.includes("vercel.app")) {
+      return callback(null, true);
+    }
+
+    return callback(new Error("Not allowed by CORS: " + origin));
   },
   credentials: true
 }));
