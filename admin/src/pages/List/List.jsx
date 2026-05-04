@@ -6,22 +6,23 @@ const List = ({ url }) => {
 
   const [list, setList] = useState([])
 
-  // FETCH LIST
+  // ================= FETCH LIST =================
   const fetchList = async () => {
     try {
       const response = await axios.get(`${url}/api/food/list`)
 
       if (response?.data?.success) {
-        setList(response.data.data)
+        setList(response.data.data || [])
       } else {
         console.log(response?.data?.message || "Failed to fetch list")
       }
+
     } catch (error) {
-      console.log("Fetch error:", error.message)
+      console.log("Fetch error:", error?.message)
     }
   }
 
-  // DELETE FOOD
+  // ================= DELETE FOOD =================
   const removeFood = async (foodId) => {
     try {
       const response = await axios.post(`${url}/api/food/remove`, {
@@ -33,8 +34,9 @@ const List = ({ url }) => {
       } else {
         console.log(response?.data?.message || "Delete failed")
       }
+
     } catch (error) {
-      console.log("Delete error:", error.message)
+      console.log("Delete error:", error?.message)
     }
   }
 
@@ -68,7 +70,7 @@ const List = ({ url }) => {
 
               {/* ✅ FIXED IMAGE PATH */}
               <img
-                src={`${url}/uploads/${item.image}`}
+                src={`${url}/images/${item.image}`}
                 alt={item.name}
                 onError={(e) => {
                   e.target.src = "/default-food.png"
