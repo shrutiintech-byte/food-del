@@ -4,8 +4,14 @@ import multer from "multer"
 
 const foodRouter = express.Router()
 
-// ================= MULTER (TEMP MEMORY STORAGE) =================
-const storage = multer.memoryStorage()
+// ================= DISK STORAGE (FIXED) =================
+const storage = multer.diskStorage({
+  destination: "uploads",
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`)
+  }
+})
+
 const upload = multer({ storage })
 
 // ================= ROUTES =================
