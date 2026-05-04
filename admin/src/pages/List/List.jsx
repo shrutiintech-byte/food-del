@@ -29,7 +29,7 @@ const List = ({ url }) => {
       })
 
       if (response?.data?.success) {
-        await fetchList() // refresh after delete
+        await fetchList()
       } else {
         console.log(response?.data?.message || "Delete failed")
       }
@@ -66,8 +66,9 @@ const List = ({ url }) => {
           list.map((item) => (
             <div key={item._id} className='list-table-format'>
 
+              {/* ✅ FIXED IMAGE PATH */}
               <img
-                src={`${url}/images/${item.image}`}
+                src={`${url}/uploads/${item.image}`}
                 alt={item.name}
                 onError={(e) => {
                   e.target.src = "/default-food.png"
