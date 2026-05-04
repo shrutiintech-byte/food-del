@@ -3,7 +3,9 @@ import './Add.css'
 import { assets } from '../../assets/assets'
 import axios from "axios"
 
-const Add = ({ url }) => {
+const Add = () => {
+
+  const url = "https://food-del-2oly.onrender.com"   // ✅ FIXED HERE
 
   const [image, setImage] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -15,7 +17,6 @@ const Add = ({ url }) => {
     category: "Roll"
   })
 
-  // HANDLE INPUT
   const onChangeHandler = (event) => {
     const { name, value } = event.target
 
@@ -25,11 +26,9 @@ const Add = ({ url }) => {
     }))
   }
 
-  // SUBMIT HANDLER
   const onSubmitHandler = async (event) => {
     event.preventDefault()
 
-    // VALIDATION
     if (!data.name || !data.description || !data.price) {
       alert("Please fill all fields")
       return
@@ -52,13 +51,17 @@ const Add = ({ url }) => {
 
       const response = await axios.post(
         `${url}/api/food/add`,
-        formData
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        }
       )
 
       if (response?.data?.success) {
         alert("Food Added Successfully ✅")
 
-        // RESET FORM
         setData({
           name: "",
           description: "",
@@ -73,7 +76,7 @@ const Add = ({ url }) => {
       }
 
     } catch (error) {
-      console.log("Add error:", error.message)
+      console.log("Add error:", error?.message)
       alert("Server Error ❌")
     } finally {
       setLoading(false)
@@ -84,7 +87,6 @@ const Add = ({ url }) => {
     <div className='add'>
       <form className='flex-col' onSubmit={onSubmitHandler}>
 
-        {/* IMAGE UPLOAD */}
         <div className="add-img-upload flex-col">
           <p>Upload Image</p>
 
@@ -108,7 +110,6 @@ const Add = ({ url }) => {
           />
         </div>
 
-        {/* NAME */}
         <div className="add-product-name flex-col">
           <p>Product Name</p>
           <input
@@ -121,7 +122,6 @@ const Add = ({ url }) => {
           />
         </div>
 
-        {/* DESCRIPTION */}
         <div className="add-product-description flex-col">
           <p>Product Description</p>
           <textarea
@@ -134,7 +134,6 @@ const Add = ({ url }) => {
           />
         </div>
 
-        {/* CATEGORY + PRICE */}
         <div className="add-category-price">
 
           <div className="add-category flex-col">
@@ -169,7 +168,6 @@ const Add = ({ url }) => {
 
         </div>
 
-        {/* BUTTON */}
         <button
           type='submit'
           className='add-btn'
