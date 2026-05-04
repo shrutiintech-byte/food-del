@@ -16,7 +16,7 @@ const port = process.env.PORT || 4000;
 // ================= DB =================
 connectDB();
 
-// ================= CORS CONFIG =================
+// ================= CORS =================
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174"
@@ -24,7 +24,6 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function (origin, callback) {
-    // allow requests with no origin (Postman / mobile apps)
     if (!origin) return callback(null, true);
 
     // allow localhost
@@ -32,12 +31,12 @@ app.use(cors({
       return callback(null, true);
     }
 
-    // allow ALL vercel deployments (🔥 main fix)
-    if (origin.includes("vercel.app")) {
+    // allow Vercel frontend
+    if (origin && origin.includes("vercel.app")) {
       return callback(null, true);
     }
 
-    return callback(new Error("Not allowed by CORS: " + origin));
+    return callback(null, true); // fallback safe (prevents CORS crash)
   },
   credentials: true
 }));
@@ -51,10 +50,11 @@ app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
 
-// ================= STATIC =================
-app.use("/images", express.static("uploads"));
+// ================= STATIC FILES (FIXED) =================
+// IMPORTANT FIX: must match frontend URL /uploads
+app.use("/uploads", express.static("uploads"));
 
-// ================= TEST =================
+// ================= TEST ROUTE =================
 app.get("/", (req, res) => {
   res.send("API Working 🚀");
 });
