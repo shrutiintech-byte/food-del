@@ -23,18 +23,17 @@ const allowedOrigins = [
 ]
 
 app.use(cors({
-  origin: function (origin, callback) {
+  origin: (origin, callback) => {
     if (!origin) return callback(null, true)
 
-    if (allowedOrigins.includes(origin)) {
+    if (
+      allowedOrigins.includes(origin) ||
+      origin.includes("vercel.app")
+    ) {
       return callback(null, true)
     }
 
-    if (origin && origin.includes("vercel.app")) {
-      return callback(null, true)
-    }
-
-    return callback(null, true)
+    return callback(new Error("Not allowed by CORS"))
   },
   credentials: true
 }))
@@ -42,18 +41,21 @@ app.use(cors({
 // ================= MIDDLEWARE =================
 app.use(express.json())
 
+// ✅ IMPORTANT: Serve images correctly
+app.use("/images", express.static("uploads"))
+
 // ================= ROUTES =================
 app.use("/api/food", foodRouter)
 app.use("/api/user", userRouter)
 app.use("/api/cart", cartRouter)
 app.use("/api/order", orderRouter)
 
-// ================= TEST =================
+// ================= TEST ROUTE =================
 app.get("/", (req, res) => {
   res.send("API Working 🚀")
 })
 
-// ================= START =================
+// ================= START SERVER =================
 app.listen(port, () => {
   console.log(`Server Started On http://localhost:${port}`)
 })
